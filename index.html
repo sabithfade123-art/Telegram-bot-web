@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Web App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Telegram Web Apps API script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">PORTFOLIO</div>
+            <button class="btn-primary" onclick="openContact()">Contact Me</button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="avatar-container">
+                <img src="https://via.placeholder.com/150" alt="Profile Avatar" class="avatar">
+            </div>
+            <h1>ALEX <span class="neon-text">DESIGNER</span></h1>
+            <p class="subtitle">BUILDER • DEVELOPER • DESIGNER</p>
+            <p class="bio">Hi, I'm Alex. I build modern, clean web interfaces and interactive mini-apps. Welcome to my personal Telegram space.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn-outline" onclick="scrollToGame()">Play Mini-Game</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Tabs (Replaced Streaming Sections) -->
+        <section class="tabs-section">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab(event, 'skills')">Skills</button>
+                <button class="tab-btn" onclick="switchTab(event, 'projects')">Projects</button>
+            </div>
+
+            <div id="skills" class="tab-content active">
+                <div class="grid">
+                    <div class="card"><h3>Frontend</h3><p>HTML5, CSS3, JavaScript, React</p></div>
+                    <div class="card"><h3>UI/UX</h3><p>Figma, Prototyping, Wireframing</p></div>
+                    <div class="card"><h3>Tools</h3><p>Git, GitHub, VS Code</p></div>
+                </div>
+            </div>
+
+            <div id="projects" class="tab-content">
+                <div class="grid">
+                    <div class="card"><h3>E-Commerce UI</h3><p>A minimalist design system built for web.</p></div>
+                    <div class="card"><h3>Telegram Bot</h3><p>A utility automation bot built using Node.js.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Mini Game Canvas -->
+        <section class="game-section" id="game-container">
+            <h2>FLAPPY NEON 🔥</h2>
+            <p class="game-hint">Tap screen or press Space to fly. Avoid the neon pipes!</p>
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas" width="360" height="450"></canvas>
+                <div id="retryMenu" class="game-overlay hidden">
+                    <p>GAME OVER</p>
+                    <button class="btn-primary" onclick="resetGame()">Try Again</button>
+                </div>
+            </div>
+            <div class="score-board">
+                <div>Score: <span id="currentScore">0</span></div>
+                <div>Best: <span id="highScore">0</span></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Alex. Built for Telegram Mini Apps.</p>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        // Initialize Telegram WebApp
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+
+        function switchTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            const tabs = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function scrollToGame() {
+            document.getElementById('game-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openContact() {
+            // Check if running inside Telegram to use their modal
+            if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                tg.showAlert("Thanks for checking in! Reach out directly via chat.");
+            } else {
+                alert("Contact: your-email@example.com");
+            }
+        }
+    </script>
+</body>
+</html>
