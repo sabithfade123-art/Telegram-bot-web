@@ -1,10 +1,11 @@
 :root {
-    --bg-color: #030712;
-    --card-bg: rgba(17, 24, 39, 0.7);
+    --bg-color: #060214;
+    --card-bg: rgba(22, 12, 43, 0.65);
+    --neon-purple: #9d4edd;
+    --neon-magenta: #ff007f;
     --neon-cyan: #00f2fe;
-    --neon-magenta: #f355da;
     --text-white: #ffffff;
-    --text-muted: #9ca3af;
+    --text-muted: #b3a7d4;
 }
 
 * {
@@ -14,20 +15,18 @@
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 🌌 Animated Space Background from the Video */
+/* 🌌 Dark Animated Synthwave Space Background */
 body {
     background-color: var(--bg-color);
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
+        radial-gradient(rgba(157, 78, 221, 0.4) 1px, transparent 30px),
+        radial-gradient(rgba(255, 0, 127, 0.3) 2px, transparent 40px);
+    background-size: 300px 300px, 400px 400px;
+    background-position: 0 0, 50px 50px;
     color: var(--text-muted);
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 .container {
@@ -37,42 +36,42 @@ body {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    backdrop-filter: blur(10px);
 }
 
-/* 👑 Clean Navigation Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(157, 78, 221, 0.15);
     padding-bottom: 16px;
 }
 
 .logo {
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 3px;
     color: var(--text-white);
-    font-size: 0.9rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
 }
 
-/* 👤 Sleek Cyber Hero Section */
+.neon-magenta-text {
+    color: var(--neon-magenta);
+    text-shadow: 0 0 10px var(--neon-magenta);
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 20px 0;
+    gap: 18px;
 }
 
 .avatar-container {
-    position: relative;
     border-radius: 50%;
     padding: 4px;
-    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
-    box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.35);
 }
 
 .avatar {
@@ -80,83 +79,77 @@ header {
     height: 110px;
     border-radius: 50%;
     display: block;
-    background: #111827;
+    background: #0d0621;
 }
 
 h1 {
     color: var(--text-white);
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     font-weight: 900;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
 .neon-text {
-    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+    background: linear-gradient(90deg, var(--neon-magenta), var(--neon-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.3));
+    filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.4));
 }
 
 .subtitle {
     font-size: 0.75rem;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     color: var(--neon-cyan);
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 800;
 }
 
 .bio {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 90%;
+    max-width: 95%;
 }
 
-/* 🎛️ Glassmorphic Tabs UI */
-.tabs-section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
+/* 🎛️ Scrollable Premium Tabs UI */
 .tabs-header {
     display: flex;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 6px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid rgba(157, 78, 221, 0.15);
+    overflow-x: auto;
+    gap: 4px;
 }
 
 .tab-btn {
     flex: 1;
+    min-width: 85px;
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 10px 0;
-    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 12px 0;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 .tab-btn.active {
     color: var(--text-white);
-    background: linear-gradient(90deg, rgba(0, 242, 254, 0.2), rgba(243, 85, 218, 0.2));
-    border: 1px solid rgba(0, 242, 254, 0.3);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+    box-shadow: 0 4px 12px rgba(255, 0, 127, 0.3);
 }
 
 .tab-content {
     display: none;
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .tab-content.active {
     display: block;
 }
 
-/* 🎴 Premium Neon Grid Cards */
+/* 🎴 Cards styling */
 .grid {
     display: flex;
     flex-direction: column;
@@ -167,51 +160,38 @@ h1 {
     background: var(--card-bg);
     padding: 20px;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(157, 78, 221, 0.1);
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
+    backdrop-filter: blur(8px);
 }
 
 .card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 4px; height: 100%;
-    background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-magenta));
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0, 242, 254, 0.3);
+    background: var(--neon-magenta);
 }
 
 .card h3 {
     color: var(--text-white);
     font-size: 1.1rem;
     margin-bottom: 6px;
-    font-weight: 700;
 }
 
-/* 🕹️ Synthwave Arcade Game Container */
+/* 🕹️ Game Module Adjustments */
 .game-section {
     text-align: center;
-    background: rgba(243, 85, 218, 0.03);
+    background: rgba(157, 78, 221, 0.04);
     padding: 24px 16px;
     border-radius: 24px;
-    border: 1px solid rgba(243, 85, 218, 0.1);
+    border: 1px solid rgba(157, 78, 221, 0.15);
 }
 
 .game-section h2 {
     color: var(--text-white);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: 2px;
-    margin-bottom: 4px;
-}
-
-.game-hint {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 16px;
 }
 
 .canvas-wrapper {
@@ -222,18 +202,17 @@ h1 {
 }
 
 canvas {
-    background: #070a13;
-    border: 2px solid rgba(255, 255, 255, 0.08);
+    background: #09041a;
+    border: 2px solid rgba(157, 78, 221, 0.2);
     border-radius: 16px;
     display: block;
     width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .game-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(7, 10, 19, 0.95);
+    background: rgba(6, 2, 20, 0.95);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -241,9 +220,6 @@ canvas {
     gap: 20px;
     border-radius: 16px;
     color: var(--text-white);
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
 }
 
 .hidden { display: none !important; }
@@ -252,53 +228,48 @@ canvas {
     display: flex;
     justify-content: space-around;
     margin-top: 16px;
-    font-weight: 700;
     color: var(--text-white);
-    font-size: 0.95rem;
 }
 
-/* 🔘 Futuristic Buttons */
+/* 🔘 Buttons */
 .btn-primary, .btn-outline {
-    padding: 12px 24px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 20px;
     cursor: pointer;
     font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 0.85rem;
     transition: all 0.2s;
 }
 
 .btn-primary {
-    background: linear-gradient(90deg, var(--neon-cyan), #0072ff);
+    background: linear-gradient(90deg, var(--neon-magenta), var(--neon-purple));
     border: none;
-    color: #000;
-    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    color: var(--text-white);
+    box-shadow: 0 4px 12px rgba(255, 0, 127, 0.2);
 }
 
 .btn-primary:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px var(--neon-cyan);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px var(--neon-magenta);
 }
 
 .btn-outline {
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon-purple);
     color: var(--text-white);
 }
 
 .btn-outline:hover {
-    border-color: var(--neon-magenta);
-    box-shadow: 0 0 15px rgba(243, 85, 218, 0.3);
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
 }
 
 footer {
     text-align: center;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.2);
-    margin-top: 10px;
+    color: rgba(157, 78, 221, 0.3);
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
 }
